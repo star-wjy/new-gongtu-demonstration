@@ -2005,22 +2005,14 @@
             }
         });
 
-        const comparisonImages1 = [
-            { src: '三视图1.png', caption: '三视图' },
-            { src: '轴测图1.png', caption: '轴测图' },
-            { src: '爆炸图1.png', caption: '爆炸图' }
-        ];
-        const comparisonImages2 = [
-            { src: '三视图2.png', caption: '三视图' },
-            { src: '轴测图2.png', caption: '轴测图' },
-            { src: '爆炸图2.png', caption: '爆炸图' }
+        const comparisonImages = [
+            { src: '机器人1.png', caption: '初代・尺蠖纯机械四足' },
+            { src: '机器人2.png', caption: '二代・轮足复合弹跳四足' }
         ];
         let currentComparisonIndex = 0;
-        let currentComparisonSet = 0;
 
         function openComparisonLightbox(index) {
-            currentComparisonSet = index;
-            currentComparisonIndex = 0;
+            currentComparisonIndex = index;
             const modal = document.getElementById('comparisonLightbox');
             updateComparisonImage();
             modal.classList.add('active');
@@ -2037,22 +2029,19 @@
             const image = document.getElementById('comparisonImage');
             const caption = document.getElementById('comparisonCaption');
             const indicator = document.getElementById('comparisonIndicator');
-            const images = currentComparisonSet === 0 ? comparisonImages1 : comparisonImages2;
             
-            image.src = images[currentComparisonIndex].src;
-            caption.textContent = images[currentComparisonIndex].caption;
-            indicator.textContent = `${currentComparisonIndex + 1} / ${images.length}`;
+            image.src = comparisonImages[currentComparisonIndex].src;
+            caption.textContent = comparisonImages[currentComparisonIndex].caption;
+            indicator.textContent = `${currentComparisonIndex + 1} / ${comparisonImages.length}`;
         }
 
         function prevComparisonImage() {
-            const images = currentComparisonSet === 0 ? comparisonImages1 : comparisonImages2;
-            currentComparisonIndex = (currentComparisonIndex - 1 + images.length) % images.length;
+            currentComparisonIndex = (currentComparisonIndex - 1 + comparisonImages.length) % comparisonImages.length;
             updateComparisonImage();
         }
 
         function nextComparisonImage() {
-            const images = currentComparisonSet === 0 ? comparisonImages1 : comparisonImages2;
-            currentComparisonIndex = (currentComparisonIndex + 1) % images.length;
+            currentComparisonIndex = (currentComparisonIndex + 1) % comparisonImages.length;
             updateComparisonImage();
         }
 
